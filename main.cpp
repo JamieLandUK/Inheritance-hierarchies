@@ -4,22 +4,35 @@
 #include "B.h"
 #include "C.h"
 
+// Takes the two inputs.
+// In is the vector which is populated. Out is used to calculate in and prints the contents at the end.
 bool myFunction(std::vector<A*> in, std::vector<A*> &out) {
+    // Looping through every pointer that is input in the vector.
     for (int i = 0; i < (int)in.size(); i++) {
         A *ptr;
+        // If the name output is A...
         if (in[i]->name() == "A") {
+            // Create a new object to work on
             ptr = new A;
+            // (Sends to the output at the end).
+        // Doing the same for B.
         } else if (in[i]->name() == "B") {
-            ptr = new B;  
+            ptr = new B;
+        // ... And C.
         } else if (in[i]->name() == "C") {
             ptr = new C;
         } else {
+            // If the object given does not have a correct type, error collection.
             std::cout << "Invalid derived type '" << in[i]->name() << "'" << std::endl;
+            // bool for error collection purposes.
             return false;
         }
+        // After each loop, this is called and the new function is put into the output vector.
         out.push_back(ptr);
+        // Print the vector.
         out[i]->print();
     }
+    // Finish
     return true;
 }
 
@@ -51,5 +64,7 @@ int main() {
 
     std::vector<A*> out;
 
-    myFunction(in, out);
+    if (!myFunction(in, out)) {
+        std::cout << "There was an error." << std::endl;
+    }
 }
