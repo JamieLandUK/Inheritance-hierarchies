@@ -24,5 +24,32 @@ bool myFunction(std::vector<A*> in, std::vector<A*> &out) {
 }
 
 int main() {
-  std::cout << "Hello World!\n";
+    // Creating the vector to be sent to the function.
+    std::vector<A*> in;
+
+    // Creating the objects.
+    A a1;
+    A *a1p = &a1;
+    A a2;
+    A *a2p = &a2;
+    B b1;
+    B *b1p = &b1;
+    B b2;
+    B *b2p = &b2;
+    C c1;
+    C *c1p = &c1;
+    C c2;
+    C *c2p = &c2;
+
+    // Adding the new objects to the vector.
+    in.push_back(b2p);
+    in.push_back(c1p);
+    in.push_back(b1p);
+    in.push_back(a2p);
+    in.push_back(c2p);
+    in.push_back(a1p);
+
+    std::vector<A*> out;
+
+    myFunction(in, out);
 }

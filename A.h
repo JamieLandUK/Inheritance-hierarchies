@@ -2,14 +2,12 @@
 #include <string>
 
 class A {
-    private:
-        std::string n;
     public:
-        std::string name() {
-            return n;
+        virtual std::string name() {
+            return "A";
         }
         virtual void print() {
             std::cout << "This is an object of A." << std::endl;
         }
-        friend bool myFunction();
+        //friend bool myFunction();
 };
